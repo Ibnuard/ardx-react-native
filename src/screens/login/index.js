@@ -1,10 +1,17 @@
 import * as React from 'react';
 import {View, Text} from 'react-native';
 import {Button} from '../../components';
+import {retrieveData, storeData} from '../../utils/store';
 import {cLog} from '../../utils/utils';
 import styles from './styles';
 
 const LoginScreen = ({navigation}) => {
+  const onLoadDataPressed = async () => {
+    const data = await retrieveData('testing', false);
+
+    cLog('data : ' + data);
+  };
+
   return (
     <View style={styles.container}>
       <Text>LoginScreen</Text>
@@ -16,10 +23,18 @@ const LoginScreen = ({navigation}) => {
         onPress={() => navigation.navigate('Main')}
       />
       <Button
+        title="Save data"
         isLoading={false}
         invert
         disabled={false}
-        onPress={() => cLog('Holas', 'red')}
+        onPress={() => storeData('testing', 'Test', false)}
+      />
+      <Button
+        title="Load data"
+        isLoading={false}
+        invert
+        disabled={false}
+        onPress={() => onLoadDataPressed()}
       />
     </View>
   );
