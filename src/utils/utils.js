@@ -15,3 +15,10 @@ export const cLog = (log = '', color) => {
   };
   console.log(`${_selectColor()}${log}`);
 };
+
+//callback to avoid re-render
+export const wait = timeout => {
+  return new Promise(resolve => {
+    setTimeout(resolve, timeout);
+  });
+};

@@ -1,6 +1,7 @@
 import * as React from 'react';
 import {View, Text} from 'react-native';
 import {Button, Card, Modal} from '../../components';
+import {AuthContext} from '../../context';
 import {retrieveData, storeData} from '../../utils/store';
 import {cLog} from '../../utils/utils';
 import styles from './styles';
@@ -13,6 +14,8 @@ const LoginScreen = ({navigation}) => {
 
     cLog('data : ' + data);
   };
+
+  const {signIn} = React.useContext(AuthContext);
 
   return (
     <View style={styles.container}>

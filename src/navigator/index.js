@@ -1,9 +1,9 @@
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import HomeScreen from '../screens/home';
 import ProfileScreen from '../screens/profile';
 import LoginScreen from '../screens/login';
-
+import SplashScreen from '../screens/splash';
 
 //create stack screen
 const Stack = createNativeStackNavigator();
@@ -11,30 +11,40 @@ const Stack = createNativeStackNavigator();
 //create bottom tab
 const Tab = createBottomTabNavigator();
 
-
-
 //===================================
 // ========== GAP ===================
 // ==================================
 
+export const SplashStack = () => {
+  return (
+    <Stack.Navigator>
+      <Stack.Screen
+        name="Splash"
+        component={SplashScreen}
+        options={{
+          headerShown: false,
+        }}
+      />
+    </Stack.Navigator>
+  );
+};
 
-//main stack screen
-export const MainStackScreen = () => {
-    return (
-        <Stack.Navigator>
-            <Stack.Screen name="Auth" component={LoginScreen} />
-            <Stack.Screen name="Main" component={MainTabScreen} />
-        </Stack.Navigator>
-    )
-}
-
+//auth stack screen
+export const AuthStackScreen = () => {
+  return (
+    <Stack.Navigator>
+      <Stack.Screen name="SignIn" component={LoginScreen} />
+      <Stack.Screen name="SignUp" component={LoginScreen} />
+    </Stack.Navigator>
+  );
+};
 
 //tab stack screen
-export const MainTabScreen = () => {
-    return (
-        <Tab.Navigator>
-            <Stack.Screen name="Home" component={HomeScreen} />
-            <Stack.Screen name="Profile" component={ProfileScreen} />
-        </Tab.Navigator>
-    )
-}
+export const MainScreen = () => {
+  return (
+    <Tab.Navigator>
+      <Stack.Screen name="Home" component={HomeScreen} />
+      <Stack.Screen name="Profile" component={ProfileScreen} />
+    </Tab.Navigator>
+  );
+};
