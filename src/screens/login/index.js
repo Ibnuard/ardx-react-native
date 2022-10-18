@@ -25,7 +25,7 @@ const LoginScreen = ({navigation}) => {
         upperCase={false}
         isLoading={false}
         disabled={false}
-        onPress={() => navigation.navigate('Main')}
+        onPress={() => signIn()}
       />
       <Button
         title="Save data"
