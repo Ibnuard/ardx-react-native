@@ -1,11 +1,13 @@
 import * as React from 'react';
 import {View, Text} from 'react-native';
-import {Button} from '../../components';
+import {Button, Card, Modal} from '../../components';
 import {retrieveData, storeData} from '../../utils/store';
 import {cLog} from '../../utils/utils';
 import styles from './styles';
 
 const LoginScreen = ({navigation}) => {
+  const [visible, setVisible] = React.useState(false);
+
   const onLoadDataPressed = async () => {
     const data = await retrieveData('testing', false);
 
@@ -35,6 +37,21 @@ const LoginScreen = ({navigation}) => {
         invert
         disabled={false}
         onPress={() => onLoadDataPressed()}
+      />
+      <Button
+        title="Show Modal"
+        isLoading={false}
+        invert
+        disabled={false}
+        onPress={() => setVisible(true)}
+      />
+      <Card>
+        <Text>Hallo</Text>
+      </Card>
+      <Modal
+        visible={visible}
+        type={'popup'}
+        onPress={() => setVisible(false)}
       />
     </View>
   );
